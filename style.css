@@ -21,18 +21,137 @@
 }
 
 body {
+    align-items     : center;
+    background-color: var(--red);
     background-image: url(./images/bg-intro-desktop.png);
+    display         : flex;
+    flex-direction  : row;
     font-family     : "Poppins", sans-serif;
+    font-weight     : 400;
+    gap             : 3em;
+    justify-content : center;
     min-height      : 100vh;
     min-width       : 100vw;
     overflow        : hidden;
+    font-size       : clamp(1rem, 0.4286rem + .08571vw, 3rem);
 }
 
-.attribution {
-    font-size : .9em;
+aside {
+    width: min-content;
+}
+
+aside h1 {
+    color      : white;
+    font-size  : 3em;
+    line-height: 1.25em;
+    width      : 12em;
+}
+
+aside p {
+    color      : white;
+    font-size  : 1em;
+    line-height: 1.75em;
+    margin-top : 2em;
+    width      : 32em;
+}
+
+main {
+    width: 33.75em;
+}
+
+main button {
+    border       : 0;
+    border-radius: .5em;
+    font-size    : .95em;
+    font-weight  : 500;
+    outline      : 0;
+    padding      : 1.25em 0;
+    width        : 100%;
+}
+
+main button#try-it {
+    background-color: var(--blue);
+    box-shadow      : 0 0.45em 0 0 rgba(0, 0, 0, .15);
+    color           : var(--grayish-blue);
+    font-size       : 1.01em;
+    letter-spacing  : .0325em;
+    margin-bottom   : 1.5em;
+    padding         : 1.2em 0;
+}
+
+main button#try-it span {
+    color      : white;
+    font-weight: 600;
+}
+
+main button:hover {
+    cursor    : pointer;
+    opacity   : .9;
+    transition: all ease-in-out .2s;
+}
+
+main form {
+    background-color: white;
+    border-radius   : .5em;
+    box-shadow      : 0 .75em 0 0 rgba(0, 0, 0, .15);
+    display         : flex;
+    flex-direction  : column;
+    gap             : 1.2em;
+    padding         : 2.5em;
+}
+
+main form input {
+    border       : 1px solid var(--grayish-blue);
+    border-radius: .25em;
+    font-size    : .9em;
+    outline      : 0;
+    padding      : 1.3em 2em;
+}
+
+main form input:focus {
+    border-color: var(--blue);
+}
+
+main form button#submitButton {
+    background-color: var(--green);
+    box-shadow      : 0 .2em 0 0 hsl(154, 59%, 45%);
+    color           : white;
+    font-weight     : 600;
+    margin-top      : .2em;
+    text-transform  : uppercase;
+}
+
+main form button#submitButton:hover {
+    opacity: .8;
+}
+
+main form p {
+    color     : var(--grayish-blue);
+    font-size : .7em;
+    margin-top: -.25em;
     text-align: center;
 }
 
+main form p a {
+    color          : var(--red);
+    font-weight    : 600;
+    text-decoration: none;
+}
+
+main form p a:hover {
+    text-decoration: underline;
+}
+
+.attribution {
+    bottom    : 5em;
+    color     : white;
+    font-size : .9em;
+    left      : 50%;
+    position  : absolute;
+    text-align: center;
+    transform : translateX(-50%);
+}
+
 .attribution a {
-    color: hsl(228, 45%, 44%);
+    color: var(--blue);
 }
