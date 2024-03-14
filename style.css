@@ -155,3 +155,73 @@ main form p a:hover {
 .attribution a {
     color: var(--blue);
 }
+
+@media (max-width:375px) {
+    body {
+        background-image: url(./images/bg-intro-mobile.png);
+        flex-direction  : column;
+        overflow-y      : auto;
+        padding         : 5.75em 1.5em;
+        padding-bottom  : 3em;
+    }
+
+    aside {
+        width: 100%;
+    }
+
+    aside h1,
+    aside p {
+        text-align: center;
+        width     : 100%;
+    }
+
+    aside h1 {
+        font-size: 1.75em;
+    }
+
+    aside p {
+        line-height: 1.6em;
+        margin-top : 1.5em;
+    }
+
+    main {
+        width: 100%;
+    }
+
+    main button#try-it {
+        line-height: 1.75em;
+        margin-top : 1em;
+        padding    : 1em 3em;
+    }
+
+    main form {
+        gap    : 1.1em;
+        padding: 1.5em;
+        width  : 100%;
+    }
+
+    main form input {
+        font-weight: 600;
+        padding    : 1.25em 1.25em;
+    }
+
+    main form button#submitButton {
+        margin-top: 0.05em;
+    }
+
+    main form p {
+        font-size  : .7em;
+        line-height: 1.75em;
+        margin     : 0 auto;
+        margin-top : -.5em;
+        width      : 85%;
+    }
+
+    .attribution {
+        font-size : .8em;
+        left      : initial;
+        position  : initial;
+        text-align: center;
+        transform : initial;
+    }
+}
