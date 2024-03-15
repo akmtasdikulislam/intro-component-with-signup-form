@@ -79,5 +79,26 @@
         >.
       </p>
     </footer>
+    <script>
+      const inputFields = document.getElementsByTagName("input");
+      console.log(inputFields);
+      const submitButton = document.getElementById("submitButton");
+      submitButton.addEventListener("click", () => {
+        for (let index = 0; index < inputFields.length; index++) {
+          const inputField = inputFields[index];
+          if (inputField.value.length == 0) {
+            inputField.classList.add("error");
+            const errorMessage = `${inputField.name.toUpperCase()} cannot be empty`;
+            const errorMessageElement = document.createElement("p");
+            errorMessageElement.textContent = errorMessage;
+            console.log(errorMessageElement);
+            inputField.parentNode.insertBefore(
+              errorMessageElement,
+              inputField.nextSibling
+            );
+          }
+        }
+      });
+    </script>
   </body>
 </html>

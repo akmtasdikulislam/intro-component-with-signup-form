@@ -112,6 +112,17 @@ main form input:focus {
     border-color: var(--blue);
 }
 
+main form input~p {
+    text-align: right;
+    color     : var(--red);
+    font-size : .7em;
+    margin-top: -1.25em;
+}
+
+main form input.error {
+    border: 2px solid var(--red);
+}
+
 main form button#submitButton {
     background-color: var(--green);
     box-shadow      : 0 .2em 0 0 hsl(154, 59%, 45%);
@@ -125,7 +136,7 @@ main form button#submitButton:hover {
     opacity: .8;
 }
 
-main form p {
+main form p:last-child {
     color     : var(--grayish-blue);
     font-size : .7em;
     margin-top: -.25em;
