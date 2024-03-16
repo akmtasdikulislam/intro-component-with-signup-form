@@ -42,24 +42,33 @@
           id="fullName"
           placeholder="First Name"
         />
+        <p><i>Fullname</i> cannot be empty</p>
+        <img src="./images/icon-error.svg" alt="error-icon" />
         <input
           type="text"
           name="lastName"
           id="lastName"
           placeholder="Last Name"
         />
+        <p><i>Lastname</i> cannot be empty</p>
+        <img src="./images/icon-error.svg" alt="error-icon" />
         <input
           type="email"
           name="email"
           id="email"
           placeholder="Email Address"
         />
+        <p><i>Email</i> cannot be empty</p>
+        <p id="invalid-email">Looks like this is not an email</p>
+        <img src="./images/icon-error.svg" alt="error-icon" />
         <input
           type="password"
           name="password"
           id="password"
           placeholder="Password"
         />
+        <p><i>Password</i> cannot be empty</p>
+        <img src="./images/icon-error.svg" alt="error-icon" />
         <button id="submitButton">Claim your free trial</button>
         <p>
           By clicking the button, you are agreeing to our
@@ -80,22 +89,45 @@
       </p>
     </footer>
     <script>
-      const inputFields = document.getElementsByTagName("input");
-      console.log(inputFields);
-      const submitButton = document.getElementById("submitButton");
-      submitButton.addEventListener("click", () => {
+      const inputFields = document.getElementsByTagName("input"); // All input fields
+      const submitButton = document.getElementById("submitButton"); // form SUBMIT Button
+      const emailInput = document.getElementById("email"); // Email input field
+      const invalidEmailErrorMessage = document.getElementById("invalid-email"); // Invalid Email error message element (<p> tag)
+      // Email validation Regular Expression
+      const emailValidationRegExp =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      // Adding a CLICK event-listener to SUBMIT Button
+      submitButton.addEventListener("click", (e) => {
+        // Preventing form onSubmit reload
+        e.preventDefault();
+        // Running a for loop over all input fields and checking if they are empty. If they, then showing an error message.
         for (let index = 0; index < inputFields.length; index++) {
           const inputField = inputFields[index];
-          if (inputField.value.length == 0) {
-            inputField.classList.add("error");
-            const errorMessage = `${inputField.name.toUpperCase()} cannot be empty`;
-            const errorMessageElement = document.createElement("p");
-            errorMessageElement.textContent = errorMessage;
-            console.log(errorMessageElement);
-            inputField.parentNode.insertBefore(
-              errorMessageElement,
-              inputField.nextSibling
-            );
+          // If input field value is less than 1 then adding error class to that input field. It will show the errorIcon, errorMessage and a red border.
+          if (inputField.value.length < 1) {
+            if (inputField.classList.contains("error") == false) {
+              inputField.classList.add("error");
+            }
+          } else {
+            // If input field value is greater than 1, it means the input field is fillled up and so if it (current input field) contains any error class, then removing it to hide errorIcon, errorMessage and red border.
+            if (inputField.classList.contains("error") == true) {
+              inputField.classList.remove("error");
+            }
+          }
+        }
+        // Finally, checking if the input email matches the standard email format using Javascript Regular Expression.
+        if (emailInput.value.length > 0) {
+          // If it does not match, then adding error class to it.
+          if (emailValidationRegExp.test(emailInput.value) == false) {
+            emailInput.classList.add("error");
+            // As according to style.css, if any input field contains error class, it will show its most adjacent sibling (error message). But here most the adjacent errorMessage element does not contain InvalidEmailErrorMessage. That's why, hiding it and showing suitable errorMessage.
+            emailInput.nextElementSibling.style.display = "none";
+            invalidEmailErrorMessage.style.display = "block";
+          } else {
+            // If the email matches the standard format and if the InvalidErrorMessage is shown, then removing it.
+            if (invalidEmailErrorMessage.style.display == "block") {
+              invalidEmailErrorMessage.style.display = "none";
+            }
           }
         }
       });
